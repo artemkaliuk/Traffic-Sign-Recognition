@@ -26,9 +26,10 @@ The goals / steps of this project are the following:
 [image5]: ./test_images/gefahrenstelle.jpg "General Caution"
 [image6]: ./test_images/roadworks.jpg "Roadworks"
 [image7]: ./test_images/slippery.jpg "Slippery Road"
-[image8]: ./test_images/snow.png "Snow/Ice"
-[image9]: ./test_images/warning-pedestrian.png "Pedestrians"
+[image8]: ./test_images/snow.jpg "Snow/Ice"
+[image9]: ./test_images/warning-pedestrian.jpg "Pedestrians"
 [image10]: ./softmax.png "Original images and their 5 highest softmax probabilities"
+[image11]: ./original_reshaped.png "New test images (resized)"
 
 
 ## Rubric Points
@@ -78,12 +79,11 @@ Here is an example of a traffic sign image before and after grayscaling.
 I started with the LeNet architecture and gradually modified it. The final architecture was achieved by making the convolutional layers deeper. In order to prevent overfitting, a dropout technique was also used.
 My final model consisted of the following layers:
 
-Layer 1 - convolutional, Input: 32x32x1->28x28x6->ReLu->Pooling->14x14x12 (Output)
-Layer 2 - convolutional, Input: 14x14x12->10x10x16->Pooling-> 5x5x16->625 (Flattening, Output)
-Layer 3 - fully connected, Input: 625->300->Dropout->ReLu->300 (Output)
-Layer 4 - fully connected, Input: 300->100->Dropout->ReLu->100 (Output)
-Layer 5 - Fully connected, Input: 100->43 (Output)
-
+* Layer 1 - convolutional, Input: 32x32x1->28x28x12->ReLu->Pooling->14x14x12 (Output)
+* Layer 2 - convolutional, Input: 14x14x12->10x10x16->Pooling-> 5x5x16->625 (Flattening, Output)
+* Layer 3 - fully connected, Input: 625->300->Dropout->ReLu->300 (Output)
+* Layer 4 - fully connected, Input: 300->100->Dropout->ReLu->100 (Output)
+* Layer 5 - Fully connected, Input: 100->43 (Output)
  
 The model is implemented in cell 5.
 
@@ -109,9 +109,7 @@ To achieve these results, I started by choosing the LeNet architecture (which is
 
 Here are five+2 German traffic signs that I found on the web:
 
-![alt text][image3] ![alt text][image4] ![alt text][image5] 
-![alt text][image6] ![alt text][image7] ![alt text][image8]
-![alt text][image9]
+![alt text][image11]
 
 I have intentionally added the images "Slippery road" and "Speed Limit 50 kph" as they might be particularly difficult to classify because they were captured under an angle. As the data set might not include enough samples of such perturbations, the system might be not accurate enough in classifying such images.
 
