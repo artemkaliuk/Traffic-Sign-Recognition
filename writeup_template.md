@@ -96,9 +96,9 @@ The code for model training is implemented in cells 6 and 7.
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of 0.997
-* validation set accuracy of 0.959
-* test set accuracy of 0.945
+* training set accuracy of 0.998
+* validation set accuracy of 0.967
+* test set accuracy of 0.942
 
 To achieve these results, I started by choosing the LeNet architecture (which is often used for OCR and thus, to my opinion, would be a good fit for pattern recognition required for the traffic sign classification) and followed by gradually increasing the depth of the convolutional layers. I also decided to use two fully connected layers prior to the net output (more or less a trial-and-error approach). In order to prevent overfitting, dropout technique was deployed. In order for the network to converge, I used 25 epochs; in order to prevent oscillations in the accuracy from epoch to epoch (especially at later stages of training), I decreased the learning rate to 0.0008.
  
@@ -118,8 +118,8 @@ I have intentionally added the images "Slippery road" and "Speed Limit 50 kph" a
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
 Here are the results of the prediction:
-Original image classes are: [27 22 30 18 25  2 23]
-Predicted image classes are: [27 22 30 18 25  1 28]
+Original image classes are: [25 18 22 27  2 30 23]
+Predicted image classes are: [25 18 22 27  1 30 24]
 
 It can be seen, that, as assumed, the "Speed Limit 50 kph" and "Slippery Road" signs were mistaken for other traffic signs.
 
@@ -127,7 +127,7 @@ The overall accuracy on this extra test set is thus at 0.714. This signals of un
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook. The visualization shows the original signs and their top 5 softmax probabilities with randomly chosen corresponding images from the trainings set. It can be seen that the test images "Pedestrians", "Snow/ice", "General caution" and "Roadworks" have strong correspondences with the "ground truth" with high probabilities, whereas the images "Slippery road" and "50 kph" are classified wrongly (the 50 kph class has also a very low probability, while the class "Slippery road" was not even in the top 5 softmax probabilities for its correspondent test image). At the same time, the image "Bumpy road" is at high risk of being misclassified as "Bicycles crossing" (probability 0.45 agains the 0.54 for the correct classification).
+The code for making predictions on my final model is located in the 11th cell of the Ipython notebook. The visualization shows the original signs and their top 5 softmax probabilities with randomly chosen corresponding images from the trainings set. It can be seen that the test images "Pedestrians", "Snow/ice", "General caution", "Roadworks" and "Bumpy road" have strong correspondences with the "ground truth" with high probabilities, whereas the images "Slippery road" and "50 kph" are classified wrongly (the 50 kph class has also a very low probability, while the class "Slippery road" was not even in the top 5 softmax probabilities for its correspondent test image).
 
 ![alt text][image10] 
 
